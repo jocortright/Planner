@@ -10,34 +10,37 @@ import SwiftUI
 struct TaskPopover: View
 {
     @Environment(\.dismiss) private var dismiss
-    
     @State private var nameError = false
     
     @State private var taskName: String = ""
+    @State private var selectedCategory: Category?
     
     var categoryArray: CategoryArray
     var taskArray: TaskArray
-    
-    @State private var selectedCategory: Category?
     
     var body: some View
     {
         NavigationStack
         {
-            Text("Create New Task").frame(maxWidth:.infinity, alignment: .leading).padding(.leading).bold()
+            Text("Create New Task")
+                .frame(maxWidth:.infinity, alignment: .leading)
+                .padding(.leading).bold()
                 
             HStack
             {
                 Text("Task Name:")
-                    
                 TextField("", text: $taskName)
             }
             .padding(.horizontal)
-            Divider().padding(.horizontal)
+            
+            Divider()
+                .padding(.horizontal)
                 
             HStack
             {
-                Text("Category:").frame(maxWidth:.infinity, alignment: .leading).padding(.leading)
+                Text("Category:")
+                    .frame(maxWidth:.infinity, alignment: .leading)
+                    .padding(.leading)
                     
                 NavigationStack
                 {
@@ -45,7 +48,8 @@ struct TaskPopover: View
                     {
                         ForEach(categoryArray.categories)
                         { category in
-                            Text(category.name).tag(category)
+                            Text(category.name)
+                                .tag(category)
                         }
                     }
                     .pickerStyle(.menu)
@@ -60,10 +64,12 @@ struct TaskPopover: View
             }
             
             
-            Divider().padding(.horizontal)
+            Divider()
+                .padding(.horizontal)
                 
-            Text("Prerequisite Tasks:").frame(maxWidth:.infinity, alignment: .leading).padding(.leading)
-                
+            Text("Prerequisite Tasks:")
+                .frame(maxWidth:.infinity, alignment: .leading)
+                .padding(.leading)
                 
             HStack
             {
@@ -84,7 +90,6 @@ struct TaskPopover: View
                         let task = Task(name: taskName, prerequisites: [], category: selectedCategory ?? categoryArray.categories.first!)
                         
                         taskArray.addTask(task: task)
-                        
                         selectedCategory?.tasks.append(task)
                         
                         dismiss()

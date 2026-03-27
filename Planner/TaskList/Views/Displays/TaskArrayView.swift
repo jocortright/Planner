@@ -19,6 +19,7 @@ struct TaskArrayView: View
         VStack (alignment: .leading) // main to-do
         {
             Text("Outstanding Tasks:").bold()
+            
             VStack (alignment: .leading)
             {
                 ForEach(taskArray.displayedTasks)
@@ -32,9 +33,8 @@ struct TaskArrayView: View
         HStack
         {
             Text("All Tasks:").bold()
+            
             Spacer()
-            
-            
             
             Button("+ Add")
             {

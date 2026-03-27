@@ -10,7 +10,6 @@ import SwiftUI
 struct TaskList: View
 {
     @State private var categoryArray = CategoryArray()
-    
     @State private var displayedTasks = TaskArray()
     
     var body: some View

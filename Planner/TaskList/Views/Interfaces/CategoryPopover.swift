@@ -10,11 +10,9 @@ import SwiftUI
 struct CategoryPopover: View
 {
     @Environment(\.dismiss) private var dismiss
-    
     @State private var nameError = false
     
     @State private var categoryName: String = ""
-    
     @State private var selectedColor = Color.black
     
     var categoryArray: CategoryArray
@@ -23,16 +21,20 @@ struct CategoryPopover: View
     {
         NavigationStack
         {
-            Text("Create New Category").frame(maxWidth:.infinity, alignment: .leading).padding(.leading).bold()
+            Text("Create New Category")
+                .frame(maxWidth:.infinity, alignment: .leading)
+                .padding(.leading)
+                .bold()
             
             HStack
             {
                 Text("Category Name:")
-                    
                 TextField("", text: $categoryName)
             }
             .padding(.horizontal)
-            Divider().padding(.horizontal)
+            
+            Divider()
+                .padding(.horizontal)
             
             HStack
             {

@@ -9,8 +9,11 @@ import SwiftUI
 
 struct CategoryArrayView: View
 {
+    
+    
     var categoryArray: CategoryArray
     @State private var categoryPopover = false
+    @State private var editCategory = false
     
     var body: some View
     {
@@ -24,7 +27,23 @@ struct CategoryArrayView: View
                     
                     VStack (alignment: .leading)
                     {
-                        Text(cat.name).frame(maxWidth: .infinity).bold()
+                        HStack
+                        {
+                            Text(cat.name).bold()
+                            
+                            Spacer()
+                            
+                            Button("Edit")
+                            {
+                                editCategory = true
+                            }
+                            .popover(isPresented: $editCategory, attachmentAnchor: .point(.center))
+                            {
+                                CategoryEditor(categoryArray: categoryArray, category: cat)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
                         ForEach(cat.tasks)
                         { t in
                             Text("- \(t.name)")
