@@ -1,6 +1,7 @@
 This app is designed to help with planning/roadmaps.
 
-# TODO: In TaskList:
+# TODO:
+## In TaskList:
 * Edit Category functionality
 * Checking off/removing tasks
 * Better UI
