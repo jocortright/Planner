@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  Settings.swift
 //  Planner
 //
-//  Created by Joshua Cortright on 10/3/25.
+//  Created by Joshua Cortright on 10/14/25.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct Settings: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +20,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    Settings()
 }
+
